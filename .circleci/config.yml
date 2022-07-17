@@ -28,14 +28,14 @@ jobs:
   print_output_file:
     executor: my-executor
     steps:
-      - attach_workspace:
-            # Must be absolute path or relative path from working_directory
-            at: /tmp/workspace
+        - attach_workspace:
+              # Must be absolute path or relative path from working_directory
+              at: /tmp/workspace
 
-        - checkout
-        - run:
-            name: output
-            command: 'echo "reademme" > file.txt'
+          - checkout
+          - run:
+              name: output
+              command: 'echo "reademme" > file.txt'
 
 
 workflows:
