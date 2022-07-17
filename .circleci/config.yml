@@ -13,7 +13,6 @@ jobs:
   save_hello_world_output:
     executor: my-executor
     steps:
-      - checkout:
       - run: mkdir -p workspace
       - run: 'echo "text to output here" > output.txt'
 
