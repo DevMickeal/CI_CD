@@ -5,6 +5,8 @@ workflows:
   build:
     jobs:
       - save_hello_world_output
+      - print_output_file:
+          requires: save_hello_world_output
 
 jobs:
   save_hello_world_output:
@@ -16,3 +18,10 @@ jobs:
           name: update-npm
           command: 'echo "text to output here" > output.txt'
   print_output_file:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run:
+          name: output
+          command: 'echo "reademme" > file.txt'
