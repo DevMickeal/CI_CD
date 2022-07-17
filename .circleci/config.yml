@@ -1,0 +1,19 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+
+jobs:
+  save_hello_world_output:
+    docker:
+      - image: circleci/alpine:latest
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'echo "text to output here" > output.txt'
+  print_output_file:
+    
