@@ -1,14 +1,5 @@
 version: 2.1
 
-workflows:
-  version: 2
-  build:
-    jobs:
-      - save_hello_world_output
-      - print_output_file:
-          requires: 
-            - save_hello_world_output
-
 jobs:
   save_hello_world_output:
     docker:
@@ -26,3 +17,13 @@ jobs:
       - run:
           name: output
           command: 'echo "reademme" > file.txt'
+
+
+workflows:
+  version: 2
+  my_flow:
+    jobs:
+      - save_hello_world_output
+      - print_output_file:
+          requires: 
+            - save_hello_world_output
